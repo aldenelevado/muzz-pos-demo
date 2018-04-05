@@ -24,9 +24,8 @@ import com.google.common.base.Preconditions;
 @Configuration
 @EnableTransactionManagement
 @PropertySource({ "classpath:persistence-${envTarget:h2}.properties" })
-@ComponentScan({ "org.baeldung.persistence" })
-// @ImportResource("classpath*:springDataPersistenceConfig.xml")
-@EnableJpaRepositories(basePackages = "org.baeldung.persistence.dao")
+@ComponentScan({ "com.muzz.pos.persistence" })
+@EnableJpaRepositories(basePackages = "com.muzz.pos.persistence.dao")
 public class PersistenceConfig {
 
     @Autowired
@@ -43,7 +42,6 @@ public class PersistenceConfig {
         em.setPackagesToScan(new String[] { "com.muzz.pos.persistence.model" });
 
         final HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-        // vendorAdapter.set
         em.setJpaVendorAdapter(vendorAdapter);
         em.setJpaProperties(additionalProperties());
 
